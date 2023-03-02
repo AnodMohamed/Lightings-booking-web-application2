@@ -118,7 +118,7 @@
     
                                                 <div class="form-group col-md-12">
                                                     <label>{{ __('word.content') }}</label>
-                                                    <textarea name="{{$key}}[content]" class="form-control" cols="30" rows="10">{{$setting->translate($key)->content}}</textarea>
+                                                    <textarea name="{{$key}}[content]" class="form-control" id="editor" cols="30" rows="10">{{$setting->translate($key)->content}}</textarea>
                                                 </div>
     
     
@@ -391,9 +391,9 @@
 
                         <div class="card-footer">
                             <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>
-                                Submit</button>
+                                {{ __('word.submit') }}</button>
                             <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i>
-                                Reset</button>
+                                {{ __('word.reset') }}</button>
                         </div>
                     </form>
                 </div>

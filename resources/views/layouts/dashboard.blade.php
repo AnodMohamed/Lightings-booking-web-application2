@@ -5,16 +5,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="CoreUI Bootstrap 4 Admin Template">
-    <meta name="author" content="Lukasz Holeczek">
-    <meta name="keyword" content="CoreUI Bootstrap 4 Admin Template">
-    <!-- <link rel="shortcut icon" href="assets/ico/favicon.png"> -->
-    <title>CoreUI Bootstrap 4 Admin Template</title>
+    <meta name="description" content="{{ $setting->translate(app()->getlocale())->content }}">
+    <meta name="keyword" content="{{ $setting->translate(app()->getlocale())->title }}">
+    <link rel="shortcut icon" href="{{ asset($setting->favicon) }}">
+    <title></title>
     <!-- Icons -->
     <link href="{{ asset('adminassets/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('adminassets/css/simple-line-icons.css') }}" rel="stylesheet">
     <!-- Main styles for this application -->
     <link href="{{ asset('adminassets/dest/style.css') }}" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
 
 
@@ -38,7 +38,7 @@
                 <li class="nav-item">
                     <a class="nav-link navbar-toggler layout-toggler" href="#">&#9776;</a>
                 </li>
-
+             
                 <!--<li class="nav-item p-x-1">
                     <a class="nav-link" href="#">داشبورد</a>
                 </li>
@@ -59,10 +59,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="icon-location-pin"></i></a>
                 </li>
+                <li class="nav-item " style="margin-left: 10px !important">
+                    {{ auth()->user()->name }}({{ auth()->user()->status }})</li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        <img src="img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
-                        <span class="hidden-md-down">مدیر</span>
+                        <img src="img/avatars/6.jpg" class="img-avatar">
+                      
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="dropdown-header text-xs-center">
@@ -85,11 +87,29 @@
                         </a>
                     </div>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
+                        aria-haspopup="true" aria-expanded="false">
+                        <span class="hidden-md-down">{{ LaravelLocalization::getCurrentLocaleNative() }}</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+
+                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
+                                href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                {{ $properties['native'] }}
+                            </a>
+                        @endforeach
+
+                    </div>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link navbar-toggler aside-toggle" href="#">&#9776;</a>
                 </li>
-
+               
             </ul>
+       
         </div>
     </header>
     @include('layouts.sidebar')

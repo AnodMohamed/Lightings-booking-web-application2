@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 
 class Category extends Model implements  TranslatableContract
 {
-    use Translatable , HasEagerLimit , HasFactory , SoftDeletes;
+    use Translatable , HasFactory , SoftDeletes , HasEagerLimit;
 
 
     public $translatedAttributes = ['title', 'content'];
     protected $fillable = [ 'id', 'image', 'parent', 'created_at', 'updated_at', 'deleted_at'];
+
 
     public function parents()
     {
@@ -27,9 +28,9 @@ class Category extends Model implements  TranslatableContract
         return $this->hasMany(Category::class,'parent');
     }
 
-    public function posts()
+    public function products()
     {
-       return $this->hasMany(Post::class);
+       return $this->hasMany(Product::class);
     }
 
 }

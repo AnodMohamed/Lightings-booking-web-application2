@@ -80,6 +80,25 @@
                         </a>
                     </div>
                 </li>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
+                        aria-haspopup="true" aria-expanded="false">
+                        <span class="hidden-md-down">{{ LaravelLocalization::getCurrentLocaleNative() }}</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+
+                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
+                                href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                {{ $properties['native'] }}
+                            </a>
+                        @endforeach
+
+                    </div>
+                </li>
+
+
                 <li class="nav-item">
                     <a class="nav-link navbar-toggler aside-toggle" href="#">&#9776;</a>
                 </li>

@@ -24,6 +24,37 @@
             <li class="nav-title">
                گزارش گیری
             </li>
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i>
+                    {{ __('word.categories') }}</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        @can('view', $setting)
+                            <a class="nav-link" href="{{ route('dashboard.category.create') }}"><i
+                                    class="icon-user-follow"></i>{{ __('word.add category') }}</a>
+                        @endcan
+                        <a class="nav-link" href="{{ route('dashboard.category.index') }}"><i
+                                class="icon-people"></i>
+                            {{ __('word.categories') }}</a>
+                            <a class="nav-link" href="{{ route('dashboard.category.create') }}"><i
+                                class="icon-user-follow"></i>{{ __('word.add category') }}</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i>
+                    {{ __('word.products') }}</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('dashboard.product.create') }}"><i
+                                class="icon-user-follow"></i>{{ __('word.add product') }}</a>
+                        <a class="nav-link" href="{{ route('dashboard.product.index') }}"><i
+                                class="icon-people"></i>
+                            {{ __('word.products') }}</a>
+                    </li>
+                </ul>
+            </li>
              <li class="nav-item">
                 <a class="nav-link" href="{{ route('dashboard.settings')}}"><i class="icon-people"></i> {{trans('word.settings')}}</a>
                 <a class="nav-link" href="#"><i class="icon-docs"></i>  فایل ها</a>

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\Setting;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,9 +28,14 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         $settings = Setting::checkSettings();
+        $categories = Category::with('children')->where('parent' , 0)->orWhere('parent' , null)->get();
+        $lastFiveProducts = Product::with('category')->orderBy('id')->limit(5)->get();
 
         View()->share([
-            'setting'=>$settings
+            'setting'=>$settings,
+            'categories'=>$categories,
+            'lastFiveProducts'=>$lastFiveProducts,
+
         ]); 
     }
 }
