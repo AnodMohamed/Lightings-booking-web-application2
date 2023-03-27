@@ -36,7 +36,7 @@
                         <thead>
                             <tr>
                                 <th>{{__('word.title')}}</th>
-                                <th>{{__('word.smallDesc')}}</th>
+                                <th>{!! __('word.smallDesc') !!}</th>
                                 <th>{{__('word.price')}}</th>
                                 <th>{{__('word.action')}}</th>
                             </tr>
