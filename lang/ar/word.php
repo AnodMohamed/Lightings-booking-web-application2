@@ -66,6 +66,7 @@ return [
     'null' => "لايوجد",
     'reserved' => "محجوز",
     'available' => "متاح",
+    'success delete' =>"تمت الحذف بنجاح",
 
     
 ];

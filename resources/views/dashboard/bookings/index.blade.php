@@ -77,7 +77,36 @@
                                         </td>
                                         <td>
                                             <a id="deleteBtn" data-id="{{ $booking->id }}" class="edit btn btn-danger btn-sm"  data-toggle="modal" data-target="#deletemodal"><i class="fa fa-trash"></i></a>
+                                            {{-- delete --}}
+                                            <div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <form action="{{ Route('dashboard.booking.delete') }}" method="POST">
+                                                    <div class="modal-content">
 
+                                                        <div class="modal-body">
+                                                            @csrf
+                                                            <div class="form-group">
+                                                                <p>{{ __('word.sure delete') }}</p>
+
+                                                                @csrf
+                                                                <input type="hidden" name="id" id="id" value="{{  $booking->id }}">
+                                                            </div>
+
+
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-info" data-dismiss="modal">{{ __('word.close') }}</button>
+                                                            <button type="submit" class="btn btn-danger">{{ __('word.delete') }} </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog /-->
+                                            </div>
+                                            {{-- delete --}}
                                         </td>
                                     </tr>
                                 @endforeach
@@ -96,36 +125,7 @@
     </div>
 
 </main>
-{{-- delete --}}
-<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <form action="{{ Route('dashboard.products.delete') }}" method="POST">
-            <div class="modal-content">
 
-                <div class="modal-body">
-                    @csrf
-                    <div class="form-group">
-                        <p>{{ __('word.sure delete') }}</p>
-
-                        @csrf
-                        <input type="hidden" name="id" id="id" value="{{ $booking->id  }}">
-                    </div>
-
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">{{ __('word.close') }}</button>
-                    <button type="submit" class="btn btn-danger">{{ __('word.delete') }} </button>
-                </div>
-            </div>
-        </form>
-        <!-- /.modal-content -->
-    </div>
-<!-- /.modal-dialog /-->
-</div>
-{{-- delete --}}
 
 
 @endsection

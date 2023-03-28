@@ -50,6 +50,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'ad
     //booking
     Route::get('/booking/add/{booking}', [ BookingController::class,'add' ])->name('booking.add');
     Route::get('/booking/dashboard/{booking}', [ BookingController::class,'dashboard' ])->name('booking.dashboard');
+    Route::post('/booking/delete', [BookingController::class, 'delete'])->name('booking.delete');
 
     Route::resources([
         'users' => UserController::class,

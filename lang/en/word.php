@@ -65,6 +65,6 @@ return [
     'null' => "Null",
     'reserved' => "reserved",
     'available' => "available",
-
+    'success delete' =>'Deleted successfully',
     
 ];

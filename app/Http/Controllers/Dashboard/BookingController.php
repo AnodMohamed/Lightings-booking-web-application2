@@ -54,4 +54,18 @@ class BookingController extends Controller
             return redirect()->route('dashboard.product.index');
         }
     }
+
+    public function delete (Request $request)
+    {
+
+       // $this->authorize('delete' , $this->postmodel->find($request->id));
+        if(is_numeric($request->id)){
+            Booking::where('id' , $request->id)->delete();
+            // set a success message in the session
+            $request->session()->flash('success', __('word.success delete'));
+
+        }
+
+        return redirect()->back();
+    }
 }
