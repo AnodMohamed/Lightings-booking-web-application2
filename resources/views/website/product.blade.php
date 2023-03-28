@@ -43,23 +43,21 @@
                             <h3 class="mb-3">{{$product->title}}</h3>
                             <p>{!! $product->smallDesc !!}</p>
                             <p>{!! $product->content !!}</p>
+
+                            @if(count($bookings) > 0)
+                                @foreach ($bookings as $booking)
+                                    <a href="{{Route('category',$booking->id)}}" class="btn btn-sm btn-outline-secondary m-1">{{ $booking->date }}</a>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
                 <!-- News Detail End -->
-
-              
-
-               
             </div>
-
-          
         </div>
     </div>
 </div>
 </div>
 <!-- News With Sidebar End -->
 
-
-    
 @endsection
