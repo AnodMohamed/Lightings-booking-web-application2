@@ -17,7 +17,8 @@
                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                     <a class="btn btn-secondary" href="#"><i class="icon-speech"></i></a>
                     <a class="btn btn-secondary" href="./"><i class="icon-graph"></i> &nbsp;{{ __('word.categories') }}</a>
-                    <a class="btn btn-secondary" href="#"><i class="icon-settings"></i> &nbsp;{{ __('word.add category') }}</a>
+                    <a class="btn btn-secondary" href="#"><i class="icon-settings"></i> &nbsp;{{ __('word.add category') }}                                 {{ $booking->id }}
+                    </a>
                 </div>
             </li>
         </ol>
@@ -44,7 +45,6 @@
                                 <strong>{{ __('word.add category') }}</strong>
                             </div>
                             <div class="card-block">
-
 
 
 

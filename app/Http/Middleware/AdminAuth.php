@@ -16,7 +16,7 @@ class AdminAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(auth()->user()->status !== 'admin'){
+        if(Auth::user()->status !== 'admin'){
             Auth::logout();
             return redirect()->route('login');
         }else{

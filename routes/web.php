@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\BookingController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\UserController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\Dashboard\ProductsController;
 use App\Http\Controllers\Website\IndexController;
 use App\Http\Controllers\Website\WCategoryController;
 use App\Http\Controllers\Website\WProudctController;
+use App\Models\Booking;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,10 +47,14 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'ad
     Route::get('/product/all', [ProductsController::class, 'getProductsDatatable'])->name('products.all');
     Route::post('/product/delete', [ProductsController::class, 'delete'])->name('products.delete');
 
+    //booking
+    Route::get('/booking/add/{booking}', [ BookingController::class,'add' ])->name('booking.add');
+
     Route::resources([
         'users' => UserController::class,
         'category' => CategoryController::class,
         'product' => ProductsController::class,
+        'booking' => BookingController::class,
 
     ]);
 });

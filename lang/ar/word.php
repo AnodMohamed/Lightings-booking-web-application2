@@ -57,6 +57,11 @@ return [
     'edit product' => "تعديل المنتج",
     'email password reset link' => "رابط إعادة تعيين كلمة مرور البريد الإلكتروني",
     'reset password' => "إعادة تعيين كلمة المرور ",
+    'appointments' => "المواعيد",
+    'add appointment' => "إضافة موعد",
+    'date' => "التاريخ",
+    'success add' => "تمت الاضافة بنجاح",
+    'exists date' => "هذا الموعد موجود من قبل",
 
     
 ];

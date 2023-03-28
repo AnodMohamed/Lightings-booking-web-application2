@@ -31,6 +31,13 @@
                 <div class="card-header">
                     <i class="fa fa-align-justify"></i> {{__('word.products')}}
                 </div>
+
+                @if (session('success'))
+                    <div id="successMessage" class="alert alert-success"  style="display: none;">
+                        {{ session('success') }}
+                    </div>
+                @endif
+            
                 <div class="card-block">
                     <table class="table table-striped" id="table_id">
                         <thead>
@@ -129,5 +136,18 @@
             $('#deletemodal #id').val(id);
         })
     </script>
+
+    <script>
+        $(document).ready(function() {
+            // show the success message
+            $('#successMessage').show();
+
+            // hide the success message after 3 seconds
+            setTimeout(function() {
+                $('#successMessage').fadeOut('fast');
+            }, 3000);
+        });
+    </script>
+
 @endpush
 

@@ -57,7 +57,11 @@ return [
     'edit product' => "Edit product",
     'email password reset link' => "Email Password Reset Link",
     'reset password' => "Reset Password",
+    'appointments' => "Appointments",
+    'add appointment' => "Add appointment",
+    'date' => "Date",
+    'success add' => "Added successfully",
+    'exists date' => "This appointment already exists",
 
-    
     
 ];

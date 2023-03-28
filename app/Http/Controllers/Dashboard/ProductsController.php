@@ -35,9 +35,12 @@ class ProductsController extends Controller
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
 
+                //
+
                 // if (auth()->user()->can('viewAny', $this->setting)) {
                     return $btn = '
                         <a href="' . Route('dashboard.product.edit', $row->id) . '"  class="edit btn btn-success btn-sm" ><i class="fa fa-edit"></i></a>
+                        <a href="' . Route('dashboard.booking.add', $row->id) . '"  class="edit btn btn-info btn-sm" ><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></a>
                         <a id="deleteBtn" data-id="' . $row->id . '" class="edit btn btn-danger btn-sm"  data-toggle="modal" data-target="#deletemodal"><i class="fa fa-trash"></i></a>';
                 // }
             })
