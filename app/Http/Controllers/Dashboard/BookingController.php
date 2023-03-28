@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Session;
 class BookingController extends Controller
 {
     //
+    public function dashboard($booking)
+    {
+        $bookings = Booking::where('product_id',$booking)->get();
+        return view('dashboard.bookings.index', compact('bookings'));
+
+    }
 
     public function add($booking)
     {

@@ -61,7 +61,10 @@ return [
     'add appointment' => "Add appointment",
     'date' => "Date",
     'success add' => "Added successfully",
-    'exists date' => "This appointment already exists",
+    'no booking' => "There are no appointments for this product",
+    'null' => "Null",
+    'reserved' => "reserved",
+    'available' => "available",
 
     
 ];
