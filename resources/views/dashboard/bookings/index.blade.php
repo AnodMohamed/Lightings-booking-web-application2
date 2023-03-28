@@ -38,7 +38,7 @@
                     </div>
                 @endif
             
-                @if(isset($bookings))
+                @if(count($bookings) > 0)
 
                     <div class="card-block">
                         <table class="table table-striped" id="table_id">

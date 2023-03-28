@@ -40,7 +40,6 @@ class BookingController extends Controller
 
             return redirect()->back();
 
-            dd('exists');
         } else {
             // Date does not exist in booking table with same value in product_id column
             $booking = new Booking;
