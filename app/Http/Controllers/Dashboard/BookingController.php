@@ -27,7 +27,7 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         $data = [
-            'date' => 'required|date|date_format:Y-m-d|before:today',
+            'date' => 'required|date|date_format:Y-m-d|after:today',
         ];
 
         $request->validate($data);

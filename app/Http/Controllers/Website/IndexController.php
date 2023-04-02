@@ -16,4 +16,7 @@ class IndexController extends Controller
         }])->get();
        return view('website.index',  compact('categories_with_products'));
     }
+
+
+
 }

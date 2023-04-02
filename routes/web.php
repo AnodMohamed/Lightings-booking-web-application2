@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\ProductsController;
 use App\Http\Controllers\Website\IndexController;
+use App\Http\Controllers\Website\ShoppingCartController;
 use App\Http\Controllers\Website\WCategoryController;
 use App\Http\Controllers\Website\WProudctController;
 use App\Models\Booking;
@@ -23,8 +24,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::get('/product/cart/shopping', [ShoppingCartController::class, 'cart'])->name('product.cart.shopping');
 Route::get('/categories/{category}', [WCategoryController::class, 'show'])->name('category');
 Route::get('/product/{product}', [WProudctController::class, 'show'])->name('product');
+Route::get('/product/cart/{booking}', [ShoppingCartController::class, 'store'])->name('product.cart');
+
+Route::group(['prefix' => 'website', 'as' => 'website.', 'middleware' => 'customerauth'], function () {
+
+    Route::get('/product/cart/checkout', [ShoppingCartController::class, 'checkout'])->name('product.cart.checkout');
+    Route::post('/product/cart/checkout/store', [ShoppingCartController::class, 'checkoutstore'])->name('product.cart.checkout.store');
+
+});
+
 
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'adminauth'], function () {
     //Route::get('/settings', function () {

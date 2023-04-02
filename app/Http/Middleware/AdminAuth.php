@@ -16,11 +16,13 @@ class AdminAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->status !== 'admin'){
-            Auth::logout();
-            return redirect()->route('login');
-        }else{
+
+        if(Auth::user()->status === 'admin'){
             return $next($request);
+        }else{
+            session()->flush();
+            return redirect()->route('login');
         }
+        return $next($request);
     }
 }

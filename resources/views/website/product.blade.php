@@ -13,7 +13,11 @@
 
 @section('body')
  <!-- Breadcrumb Start -->
- <div class="container-fluid">
+ <div class="container-fluid  pt-3" 
+    @if ($setting->translate(app()->getlocale())->title == 'العربية') 
+        style="direction: rtl;"
+    @endif
+  >
     <div class="container">
         <nav class="breadcrumb bg-transparent m-0 p-0">
             <a class="breadcrumb-item" href="{{route('index')}}"> {{ __('word.home') }}</a>
@@ -32,8 +36,10 @@
             <div class="col-lg-12">
                 <!-- News Detail Start -->
                 <div class="position-relative mb-3">
+                   
                     <img class="img-fluid w-100" src="{{asset($product->image)}}" style="object-fit: cover;">
                     <div class="overlay position-relative bg-light">
+               
                         <div class="mb-3">
                             <a href="">{{$product->category->title}}</a>
                             <span class="px-1">/</span>
@@ -46,7 +52,8 @@
 
                             @if(count($bookings) > 0)
                                 @foreach ($bookings as $booking)
-                                    <a href="{{Route('category',$booking->id)}}" class="btn btn-sm btn-outline-secondary m-1">{{ $booking->date }}</a>
+                                    <a href="{{Route('product.cart',$booking->id)}}" class="btn btn-sm btn-outline-secondary m-1">{{ $booking->date }}</a>
+            
                                 @endforeach
                             @endif
                         </div>

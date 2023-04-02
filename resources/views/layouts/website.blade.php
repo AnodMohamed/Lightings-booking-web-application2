@@ -41,7 +41,11 @@
 
 
     <!-- Navbar Start -->
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-0" 
+        @if ($setting->translate(app()->getlocale())->title == 'العربية') 
+        style="direction: rtl;"
+        @endif
+    >
         <nav class="navbar navbar-expand-lg bg-light navbar-light py-2 py-lg-0 px-lg-5">
             <a href="" class="navbar-brand d-block d-lg-none">
                 <h1 class="m-0 display-5 text-uppercase"><span class="text-primary">News</span>Room</h1>
@@ -69,7 +73,15 @@
                         </div>
                     @endforeach
                     @if (Auth::check())
-                        <a href="{{route('dashboard.settings')}}" class="nav-item nav-link active">{{ __('word.dashboard') }}</a>
+                        @if (Auth::user()->status == "admin")
+                            <a href="{{route('dashboard.settings')}}" class="nav-item nav-link ">{{ __('word.dashboard') }}</a>
+                        @endif
+                         <!-- Authentication -->
+                         <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="nav-item nav-link active">{{ __('word.logout') }}</button>
+                        </form>
+
                     @else
                         <a href="{{ route('login')}}"  class="nav-item nav-link active">{{ __('word.login') }}</a>
                         <a href="{{ route('register')}}" class="nav-item nav-link active">{{ __('word.register') }}</a>
@@ -80,30 +92,18 @@
 
 
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
-                        aria-haspopup="true" aria-expanded="false">
-                        <span class="hidden-md-down">{{ LaravelLocalization::getCurrentLocaleNative() }}</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right">
-
-                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                            <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
-                                href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                {{ $properties['native'] }}
-                            </a>
-                        @endforeach
-
-                    </div>
-                </li>
+      
                 
                 <div class="input-group ml-auto" style="width: 100%; max-width: 300px;">
+                    <a class="nav-link  nav-link" href="{{route('product.cart.shopping')}}" >
+                        <span class="hidden-md-down"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                    </a>
                     <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="true" aria-expanded="false">
                         <span class="hidden-md-down">{{ LaravelLocalization::getCurrentLocaleNative() }}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-
+                        <h1><i class="fa-solid fa-cart-shopping"></i></h1>
                         @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                             <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
                                 href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
@@ -112,6 +112,8 @@
                         @endforeach
 
                     </div>
+
+
                 </div>
             </div>
         </nav>
@@ -125,7 +127,11 @@
 
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-light pt-5 px-sm-3 px-md-5">
+    <div class="container-fluid bg-light pt-5 px-sm-3 px-md-5"  
+        @if ($setting->translate(app()->getlocale())->title == 'العربية') 
+            style="direction: rtl;"
+        @endif
+    >
         <div class="row">
             <div class="col-lg-6 col-md-6 mb-5">
                 <a href="index.html" class="navbar-brand">
@@ -158,10 +164,10 @@
     </div>
     <div class="container-fluid py-4 px-sm-3 px-md-5">
         <p class="m-0 text-center">
-            &copy; <a class="font-weight-bold" href="#">Your Site Name</a>. All Rights Reserved.
+            &copy; <a class="font-weight-bold" href="#">{{__('word.Lightings booking')}}</a>. {{__('word.All Rights Reserved')}}.
 
             <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-            Designed by <a class="font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
+           {{__('word.Designed by Rania Munir')}}</a>
         </p>
     </div>
     <!-- Footer End -->

@@ -11,9 +11,13 @@
 @endsection
 @section('body')
     <!-- Breadcrumb Start -->
-    <div class="container-fluid">
-        <div class="container">
-            <nav class="breadcrumb bg-transparent m-0 p-0">
+    <div class="container-fluid pt-3" 
+        @if ($setting->translate(app()->getlocale())->title == 'العربية') 
+            style="direction: rtl;"
+        @endif
+    >
+        <div class="container" >
+            <nav class="breadcrumb bg-transparent m-0 p-0" >
                 <a class="breadcrumb-item" href="{{route('index')}}"> {{ __('word.home') }}</a>
                 <span class="breadcrumb-item active">{{$category->title}}</span>
             </nav>
@@ -27,7 +31,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="row">
+                    <div class="row" 
+                        @if ($setting->translate(app()->getlocale())->title == 'العربية') 
+                            style="direction: rtl;"
+                        @endif>
                         <div class="col-12">
                             <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
                                 <h3 class="m-0">{{$category->title}}</h3>
@@ -36,7 +43,7 @@
                         </div>
 
                         @foreach ($category->children as $category)
-                            <div class="col-lg-4">
+                            <div class="col-lg-4" >
                                 <div class="position-relative mb-3">
                                     <img class="img-fluid w-100" src="{{asset($category->image)}}" style="object-fit: cover;">
                                     <div class="overlay position-relative bg-light">
@@ -56,7 +63,10 @@
                         <a href=""><img class="img-fluid w-100" src="img/ads-700x70.jpg" alt=""></a>
                     </div>
 
-                    <div class="row">
+                    <div class="row" 
+                        @if ($setting->translate(app()->getlocale())->title == 'العربية') 
+                            style="direction: rtl;"
+                        @endif>
                         @foreach ($products as $product)
                             <div class="col-lg-6">
                                 <div class="d-flex mb-3">

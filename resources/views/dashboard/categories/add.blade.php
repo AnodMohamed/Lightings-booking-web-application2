@@ -16,8 +16,8 @@
             <li class="breadcrumb-menu">
                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                     <a class="btn btn-secondary" href="#"><i class="icon-speech"></i></a>
-                    <a class="btn btn-secondary" href="./"><i class="icon-graph"></i> &nbsp;{{ __('word.categories') }}</a>
-                    <a class="btn btn-secondary" href="#"><i class="icon-settings"></i> &nbsp;{{ __('word.add category') }}                                 {{ $booking->id }}
+                    <a class="btn btn-secondary" href=""><i class="icon-graph"></i> &nbsp;{{ __('word.categories') }}</a>
+                    <a class="btn btn-secondary" href="#"><i class="icon-settings"></i> &nbsp;{{ __('word.add category') }}                      
                     </a>
                 </div>
             </li>
@@ -95,7 +95,7 @@
 
                                                 <div class="form-group col-md-12">
                                                     <label>{{ __('word.content') }}</label>
-                                                    <textarea name="{{$key}}[content]" class="form-control" id="editor" cols="30" rows="10" required minlength="3" maxlength="300"></textarea>
+                                                    <textarea name="{{$key}}[content]" class="form-control"  cols="30" rows="10" required minlength="3" maxlength="300"></textarea>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -116,6 +116,7 @@
 
                             </div>
                         </div>
+                    </div>
                 </form>
             </div>
         </div>

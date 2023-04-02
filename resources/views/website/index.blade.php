@@ -27,11 +27,15 @@
  <!--Carousel end -->
 
  <!-- Top News Slider Start -->
- <div class="container-fluid py-3">
+ <div class="container-fluid py-3" >
     <div class="container">
-        <div class="owl-carousel owl-carousel-2 carousel-item-3 position-relative">
+        <div class="owl-carousel owl-carousel-2 carousel-item-3 position-relative" >
             @foreach ($lastFiveProducts as $product)
-            <div class="d-flex w-100">
+            <div class="d-flex w-100"  
+                @if ($setting->translate(app()->getlocale())->title == 'العربية') 
+                    style="direction: rtl;"
+                @endif
+            >
                 <img src="{{asset($product->image)}}" style="width: 80px; height: 80px; object-fit: cover;">
                 <div class="d-flex align-items-center bg-light px-3 w-100">
                     <a class="text-secondary font-weight-semi-bold" href="">{{$product->title}}</a>
