@@ -29,18 +29,10 @@ class UserController extends Controller
 
     public function getUsersDatatable()
     {
-        //  $data = User::select('*');
-        //  $users = Datatables::of($data)
-        //          ->addIndexColumn()
-        //          ->make(true);
         
-        if (auth()->user()->can('viewAny', $this->user)) {
-        $data = User::select('*');
-        }else{
-            $data = User::where('id' , auth()->user()->id);
-        }
-        return   Datatables::of($data)
-        ->make(true);
+         $data = User::select('*');
+         return  Datatables::of($data)
+            ->make(true);
     }
     
 }

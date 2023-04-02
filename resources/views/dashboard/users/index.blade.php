@@ -6,10 +6,10 @@
     <main class="main">
         <!-- Breadcrumb -->
         <ol class="breadcrumb">
-            <li class="breadcrumb-item">{{ __('word.dashboard') }}</li>
-            <li class="breadcrumb-item"><a href="#">{{ __('word.dashboard') }}</a>
+            <li class="breadcrumb-item"><a  href="{{route('dashboard.index')}}">{{__('word.dashboard')}}</a></li>
             </li>
-            <li class="breadcrumb-item active">داشبرد</li>
+            <li class="breadcrumb-item active">{{ __('word.users') }}</li>
+
         </ol>
 
 

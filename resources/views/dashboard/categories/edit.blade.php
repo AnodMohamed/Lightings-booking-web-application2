@@ -6,19 +6,8 @@
 
         <!-- Breadcrumb -->
         <ol class="breadcrumb">
-            <li class="breadcrumb-item">{{__('word.dashboard')}}</li>
-            <li class="breadcrumb-item"><a href="#">{{ __('word.categories') }}</a>
-            </li>
+            <li class="breadcrumb-item"><a  href="{{route('dashboard.index')}}"> {{__('word.dashboard')}}</a></li>
             <li class="breadcrumb-item active">{{ __('word.edit category') }}</li>
-
-            <!-- Breadcrumb Menu-->
-            <li class="breadcrumb-menu">
-                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                    <a class="btn btn-secondary" href="#"><i class="icon-speech"></i></a>
-                    <a class="btn btn-secondary" href="./"><i class="icon-graph"></i> &nbsp;{{ __('word.categories') }}</a>
-                    <a class="btn btn-secondary" href="#"><i class="icon-settings"></i> &nbsp;{{ __('word.edit category') }}</a>
-                </div>
-            </li>
         </ol>
 
         <div class="container-fluid">

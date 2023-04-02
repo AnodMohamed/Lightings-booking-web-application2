@@ -80,6 +80,7 @@ class ShoppingCartController extends Controller
 
             $booking =Booking::find($item->id);
             $booking->status = 1;
+            $booking->user_id = Auth::user()->id;
             $booking->update();
         }
 
@@ -152,5 +153,15 @@ class ShoppingCartController extends Controller
           // Any other status would be unexpected, so error
           return json_encode(['error' => 'Invalid PaymentIntent status']);
         }
+    }
+
+    public function delete($id){
+        Cart::remove($id);
+        // set a error message in the session
+        session()->flash('success', __('word.success delete'));
+
+        return redirect()->back();
+
+
     }
 }

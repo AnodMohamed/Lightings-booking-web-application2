@@ -28,6 +28,7 @@ Route::get('/product/cart/shopping', [ShoppingCartController::class, 'cart'])->n
 Route::get('/categories/{category}', [WCategoryController::class, 'show'])->name('category');
 Route::get('/product/{product}', [WProudctController::class, 'show'])->name('product');
 Route::get('/product/cart/{booking}', [ShoppingCartController::class, 'store'])->name('product.cart');
+Route::get('/product/cart/delete/{id}', [ShoppingCartController::class, 'delete'])->name('product.cart.delete');
 
 Route::group(['prefix' => 'website', 'as' => 'website.', 'middleware' => 'customerauth'], function () {
 
@@ -46,6 +47,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'ad
     // });
     Route::get('/settings', [ SettingController::class,'index' ])->name('settings');
     Route::post('/settings/update/{setting}', [ SettingController::class,'update' ])->name('settings.update');
+    Route::get('/index', [ SettingController::class,'dashboard' ])->name('index');
 
     //users
     Route::get('/users/all', [UserController::class, 'getUsersDatatable'])->name('users.all');

@@ -12,7 +12,10 @@ class WProudctController extends Controller
     //
     public function show(Product $product)
     {
-        $bookings = Booking::where('product_id',$product->id)->where('date', '>', now())->get();
+        $bookings = Booking::where('product_id',$product->id)
+                    ->where('date', '>', now())
+                    ->where('status', '==', 0)
+                    ->get();
         
         return view('website.product' , compact('product','bookings'));
     }

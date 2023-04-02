@@ -50,10 +50,27 @@
                             <p>{!! $product->smallDesc !!}</p>
                             <p>{!! $product->content !!}</p>
 
+
                             @if(count($bookings) > 0)
                                 @foreach ($bookings as $booking)
-                                    <a href="{{Route('product.cart',$booking->id)}}" class="btn btn-sm btn-outline-secondary m-1">{{ $booking->date }}</a>
-            
+                                    @php
+                                        $bookingId = $booking->id;
+                                        $cartHasBookingId = false;
+
+                                        Cart::content()->each(function ($cartItem) use ($bookingId, &$cartHasBookingId) {
+                                            if ($cartItem->id === $bookingId) {
+                                                $cartHasBookingId = true;
+                                                return false; // stop the loop early since the booking ID has been found
+                                            }
+                                        });                                   
+                                        
+                                    @endphp
+                                
+                                    
+                                    @if (!$cartHasBookingId) 
+                                        <a href="{{Route('product.cart',$booking->id)}}" class="btn btn-sm btn-outline-secondary m-1">{{ $booking->date }}</a>
+                                    @endif 
+                
                                 @endforeach
                             @endif
                         </div>

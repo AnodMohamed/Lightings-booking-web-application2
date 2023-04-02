@@ -74,7 +74,7 @@
                     @endforeach
                     @if (Auth::check())
                         @if (Auth::user()->status == "admin")
-                            <a href="{{route('dashboard.settings')}}" class="nav-item nav-link ">{{ __('word.dashboard') }}</a>
+                            <a href="{{route('dashboard.index')}}" class="nav-item nav-link ">{{ __('word.dashboard') }}</a>
                         @endif
                          <!-- Authentication -->
                          <form method="POST" action="{{ route('logout') }}">
@@ -188,6 +188,9 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('website') }}/js/main.js"></script>
+
+    @stack('javascripts')
+
 </body>
 
 </html>
