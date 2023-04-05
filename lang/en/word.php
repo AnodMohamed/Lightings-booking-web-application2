@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Validation Language Lines
+    | Valation Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines contain the default error messages used by
@@ -69,7 +69,7 @@ return [
     'added in cart' => "The appointment has been successfully added to shopping cart",
     'shopping cart' => "Shopping cart",
     'subtotal' => "Subtotal",
-    'total' => "Total(Incl. taxes)",
+    'total' => "Total",
     'taxes' => "Taxes",
     'count cart item'=> "The count items in your cart is ",
     'checkout' => 'Checkout',
@@ -89,5 +89,25 @@ return [
     'Lightings booking' => 'Lightings booking',
     'All Rights Reserved' =>'All Rights Reserved',
     'Designed by Rania Munir' =>'Designed by Rania Munir',
+    'My orders' => 'My orders',
+    'support table' => 'support ',
+    'order details' => 'order details',
+    'order details' => 'order details',
+    'Delivery is in progress' => 'Delivery is in progress',
+    'Delivered' => 'Delivered',
+    'Returned' => 'Returned',
+    'transaction_id' => 'Transaction id',
+    'orders' => 'orders',
+    'no orders' => 'no orders',
+    'profile' => 'profile',
+    'Profile Information'=> 'Profile Information',
+    'Update your account' => 'Update your account\'s profile information and email address',
+    'save' => 'save',
+    'saved' => 'saved successfully',
+    'Update Password' => 'Update Password',
+    'Ensure your account' =>' Ensure your account is using a long, random password to stay secure',
+    'Current Password' => 'Current Password',
+    'New Password' => 'New Password',
+    'Confirm Password' => 'Confirm Password',
 
 ];

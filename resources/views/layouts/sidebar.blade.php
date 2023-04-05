@@ -8,6 +8,10 @@
                 <a class="nav-link" href="{{ route('dashboard.users.index')}}"> {{trans('word.users')}}</a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('dashboard.order.index')}}"> {{trans('word.orders')}}</a>
+            </li>
+
             <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#">
                     {{ __('word.categories') }}</a>

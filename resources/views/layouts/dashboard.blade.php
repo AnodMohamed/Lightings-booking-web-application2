@@ -17,7 +17,7 @@
     <meta name="description" content="{{ $setting->translate(app()->getlocale())->content }}">
     <meta name="keyword" content="{{ $setting->translate(app()->getlocale())->title }}">
     <link rel="shortcut icon" href="{{ asset($setting->favicon) }}">
-    <title></title>
+    <title>{{ $setting->translate(app()->getlocale())->title }}</title>
     <!-- Icons -->
     <link href="{{ asset('adminassets/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('adminassets/css/simple-line-icons.css') }}" rel="stylesheet">
@@ -95,9 +95,7 @@
                       
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-
-                        <a class="dropdown-item" href="#"><i class="fa fa-user"></i> پروفایل</a>
-                        <!--<a class="dropdown-item" href="#"><i class="fa fa-usd"></i> Payments<span class="tag tag-default">42</span></a>-->
+                        <a class="dropdown-item" href="{{route('index')}}"><i class="fa fa-home"></i> {{__('word.home')}}</a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
                                 {{ __('word.logout') }}
@@ -144,12 +142,12 @@
     
 
     <footer class="footer">
-        <span class="text-left">
-            <a href="http://coreui.io">CoreUI</a> &copy; 2016 creativeLabs.
-        </span>
-        <span class="pull-right">
-            Powered by <a href="http://coreui.io">CoreUI</a>
-        </span>
+        <p class="m-0 text-center">
+            &copy; <a class="font-weight-bold" href="#">{{__('word.Lightings booking')}}</a>. {{__('word.All Rights Reserved')}}.
+
+            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+           {{__('word.Designed by Rania Munir')}}</a>
+        </p>
     </footer>
   <!-- Bootstrap and necessary plugins -->
   <script src="{{ asset('adminassets/js/libs/jquery.min.js') }}"></script>

@@ -2,15 +2,20 @@
 
 use App\Http\Controllers\Dashboard\BookingController;
 use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\Dashboard\OrderController;
 use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\ProductsController;
 use App\Http\Controllers\Website\IndexController;
 use App\Http\Controllers\Website\ShoppingCartController;
 use App\Http\Controllers\Website\WCategoryController;
+use App\Http\Controllers\Website\WOrederController;
 use App\Http\Controllers\Website\WProudctController;
 use App\Models\Booking;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Auth\Notifications\ResetPassword;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,11 +35,27 @@ Route::get('/product/{product}', [WProudctController::class, 'show'])->name('pro
 Route::get('/product/cart/{booking}', [ShoppingCartController::class, 'store'])->name('product.cart');
 Route::get('/product/cart/delete/{id}', [ShoppingCartController::class, 'delete'])->name('product.cart.delete');
 
+Route::get('/login', function () { return view('auth.login');} );
+Route::get('/register', function () { return view('auth.login');} );
+Route::get('/forgot-password', function () { return view('auth.forgot-password');} );
+Route::get('/user/profile', function () { return view('profile.show');} );
+
+    
+
+
+
 Route::group(['prefix' => 'website', 'as' => 'website.', 'middleware' => 'customerauth'], function () {
 
     Route::get('/product/cart/checkout', [ShoppingCartController::class, 'checkout'])->name('product.cart.checkout');
     Route::post('/product/cart/checkout/store', [ShoppingCartController::class, 'checkoutstore'])->name('product.cart.checkout.store');
 
+    //orders
+    Route::get('/orders/all', [WOrederController::class, 'geOrdersDatatable'])->name('orders.all');
+
+    Route::resources([
+        'orders' => WOrederController::class,
+
+    ]);
 });
 
 
@@ -65,11 +86,16 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'ad
     Route::get('/booking/dashboard/{booking}', [ BookingController::class,'dashboard' ])->name('booking.dashboard');
     Route::post('/booking/delete', [BookingController::class, 'delete'])->name('booking.delete');
 
+    //order
+    Route::get('/order/delivered/{id}', [OrderController::class, 'delivered'])->name('order.delivered');
+    Route::get('/order/returned/{id}', [OrderController::class, 'returned'])->name('order.returned');
+
     Route::resources([
         'users' => UserController::class,
         'category' => CategoryController::class,
         'product' => ProductsController::class,
         'booking' => BookingController::class,
+        'order' => OrderController::class,
 
     ]);
 });

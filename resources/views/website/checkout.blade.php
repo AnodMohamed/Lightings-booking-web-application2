@@ -139,7 +139,10 @@
 
                         </div>
 
-                     
+                        <div class="card-block my-3">
+                            <div class="d-flex justify-content-between information"><span>{{__('word.subtotal')}}</span><span>{{Cart::subtotal()}}</span></div>
+                            <div class="d-flex justify-content-between information"><span>{{__('word.total')}}</span><span>{{Cart::total()}}</span></div>
+                        </div>
                         <button class="btn btn-primary font-weight-semi-bold px-4" style="height: 50px;" type="submit" id="sendMessageButton">{{__('word.checkout')}}</button>
 
                     </form>

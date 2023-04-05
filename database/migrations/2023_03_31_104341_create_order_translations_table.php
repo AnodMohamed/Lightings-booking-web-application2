@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
             $table->string('address')->nullable();
-            $table->string('status')->default('ordered');
+            $table->string('status')->default('1');
             $table->unique(["order_id", "locale"]);
             $table->timestamps();
             $table->foreign("order_id")->references("id")->on("orders")->onDelete("cascade");

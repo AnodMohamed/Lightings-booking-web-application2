@@ -75,6 +75,9 @@
                     @if (Auth::check())
                         @if (Auth::user()->status == "admin")
                             <a href="{{route('dashboard.index')}}" class="nav-item nav-link ">{{ __('word.dashboard') }}</a>
+                        @elseif (Auth::user()->status == "customer")
+                            <a href="{{route('website.orders.index')}}" class="nav-item nav-link ">{{ __('word.My orders') }}</a>
+
                         @endif
                          <!-- Authentication -->
                          <form method="POST" action="{{ route('logout') }}">
@@ -98,6 +101,12 @@
                     <a class="nav-link  nav-link" href="{{route('product.cart.shopping')}}" >
                         <span class="hidden-md-down"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
                     </a>
+                    @auth
+                        <a class="nav-link  nav-link" href="{{ route('profile.show') }}" >
+                            <span class="hidden-md-down"><i class="fa fa-user" aria-hidden="true"></i></span>
+                        </a>
+                    @endauth
+
                     <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="true" aria-expanded="false">
                         <span class="hidden-md-down">{{ LaravelLocalization::getCurrentLocaleNative() }}</span>

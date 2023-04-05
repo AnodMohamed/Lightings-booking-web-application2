@@ -54,11 +54,14 @@ class ShoppingCartController extends Controller
 
         $validatedData = $request->validate($data);
 
-        if( $request->support == 0){
-            $finalltotal =  Cart::total();
-        }elseif($request->support == 1){
-            $finalltotal = Cart::total() + 5;
-        }
+        // if( $request->support == 0){
+        //     $finalltotal =  Cart::total();
+        // }elseif($request->support == 1){
+        //     $finalltotal = Cart::total() + 5;
+        // }
+
+        $finalltotal =  Cart::total();
+
 
         // dd($finalltotal);
 
