@@ -109,5 +109,9 @@ return [
     'Current Password' => 'Current Password',
     'New Password' => 'New Password',
     'Confirm Password' => 'Confirm Password',
+    'available bookings' => 'available bookings',
+    'total transactions' => 'total transactions',
+    'last six orders' => 'last six orders',
+    'last six products' => 'last six products',
 
 ];

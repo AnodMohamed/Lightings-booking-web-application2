@@ -17,10 +17,10 @@ class CustomerAuth
     public function handle(Request $request, Closure $next): Response
     {
 
-        if(Auth::user()->status === 'customer'){
+        if(Auth::user()->status == 'customer'){
             return $next($request);
         }else{
-            session()->flush();
+            Auth::logout();
             return redirect()->route('login');
         }
         return $next($request);

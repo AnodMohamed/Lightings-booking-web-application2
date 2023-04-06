@@ -109,4 +109,9 @@ return [
     'Current Password' => 'كلمة السر الحاليةp',
     'New Password' => 'كلمة مرور جديدة',
     'Confirm Password' => 'تأكيد كلمة المرور',
+    'available bookings' => 'الحجوزات المتاحة',
+    'total transactions' => 'مجموع التحويلات  ',
+    'last six orders' => 'آخر ستة طلبات',
+    'last six products' => 'اخر ستة منتجات',
+
 ];

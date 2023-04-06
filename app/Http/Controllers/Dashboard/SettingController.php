@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Booking;
+use App\Models\Order;
+use App\Models\Product;
 use App\Models\Setting;
+use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\VarDumper\VarDumper;
@@ -60,7 +65,23 @@ class SettingController extends Controller
     }
 
     public function dashboard(){
-        return view('dashboard.index');
+        $countproducts = Product::count();
+        $countorders = Order::count();
+        $countbookings = Booking::where('date', '>', now())
+                                ->where('status', '==', 0)
+                                ->count();
+        $counttransactions = Transaction::sum('amount');
+
+        $last6orders = Order::latest('created_at')
+                            ->take(6)
+                            ->get();
+
+        $last6prducts = Product::latest('created_at')
+                            ->take(6)
+                            ->get();
+
+        return view('dashboard.index' , compact('countproducts','countorders',
+        'countbookings','counttransactions','last6orders','last6prducts'));
 
     }
 
