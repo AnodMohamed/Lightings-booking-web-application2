@@ -65,7 +65,6 @@
                                         });                                   
                                         
                                     @endphp
-                                
                                     
                                     @if (!$cartHasBookingId) 
                                         <a href="{{Route('product.cart',$booking->id)}}" class="btn btn-sm btn-outline-secondary m-1">{{ $booking->date }}</a>

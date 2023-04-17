@@ -42,14 +42,14 @@
 
                                 <div class="form-group col-md-12">
                                     <label>{{ __('word.image') }}</label>
-                                    <input type="file" name="image" class="form-control" id="editor" placeholder="{{ __('word.image') }} " required  accept="image/png, image/jpeg"
+                                    <input type="file" name="image" class="form-control"  placeholder="{{ __('word.image') }} " required  accept="image/png, image/jpeg"
                                     >
                                 </div>
 
 
                             
                                 <div class="form-group col-md-12">
-                                    <label>{{ __('word.status') }}</label>
+                                    <label>{{ __('word.parent') }}</label>
                                     <select name="parent" id="" class="form-control" required>
                                         <option value="0"  @if ($category->parent == 0 || $category->parent == null)
                                             selected
@@ -57,7 +57,6 @@
                                         @foreach ($categories as $item)
                                         @if ($item->id != $category->id)
                                             
-                                    
                                         <option @if ($category->parent ==  $item->id)
                                             selected
                                         @endif value="{{$item->id}}">{{$item->title}}</option>
@@ -92,12 +91,12 @@
                                                 <div class="form-group mt-3 col-md-12">
                                                     <label>{{ __('word.title') }} - {{ $lang }}</label>
                                                     <input type="text" name="{{$key}}[title]" class="form-control"
-                                                        placeholder="{{ __('word.title') }}" value="{{$category->translate($key)->title}}" required maxlength="3" maxlength="50">
+                                                        placeholder="{{ __('word.title') }}" value="{{$category->translate($key)->title}}" required minlength="3" maxlength="50">
                                                 </div>
 
                                                 <div class="form-group col-md-12">
                                                     <label>{{ __('word.content') }}</label>
-                                                    <textarea name="{{$key}}[content]" class="form-control" cols="30" rows="10" required maxlength="3" maxlength="300">{{$category->translate($key)->content}}</textarea>
+                                                    <textarea id="editor" name="{{$key}}[content]" class="form-control" cols="30" rows="10" required maxlength="3" maxlength="300">{{$category->translate($key)->content}}</textarea>
                                                 </div>
                                             </div>
                                         @endforeach

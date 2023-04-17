@@ -46,7 +46,7 @@
 
 
                                 <div class="form-group col-md-12">
-                                    <label>{{ __('word.status') }}</label>
+                                    <label>{{ __('word.category') }}</label>
                                     <select name="category_id" id="" class="form-control" required>
                                         @foreach ($categories as $category)
                                             <option  @selected($product->category_id == $category->id) value="{{ $category->id }}">{{ $category->title }}</option>

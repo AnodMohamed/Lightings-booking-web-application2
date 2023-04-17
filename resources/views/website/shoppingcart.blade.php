@@ -1,10 +1,6 @@
 @extends('layouts.website')
 
 
-
-
-
-
 @section('body')
  <!-- Breadcrumb Start -->
  <div class="container-fluid  pt-3

@@ -41,7 +41,7 @@
                                 <div class="d-flex justify-content-between information"><span>{{__('word.transaction_id')}}:</span><span>{{ $transaction->transaction_id}}</span></div>
 
                                 @foreach ($orderwithlang as $orderlang)
-                                    @if ($orderlang->locale == 'en')
+                                    @if ($orderlang->locale == $setting->translate(app()->getlocale())->locale)
                                         <div class="d-flex justify-content-between information mx-2"><span>{{__('word.firstname')}}:</span><span>{{ $orderlang->firstname}}</span></div>
                                         <div class="d-flex justify-content-between information"><span>{{__('word.lastname')}}:</span><span>{{ $orderlang->lastname}}</span></div>
                                         <div class="d-flex justify-content-between information"><span>{{__('word.address')}}:</span><span>{{ $orderlang->address}}</span></div>
@@ -49,29 +49,12 @@
                                             <span>
                                                 @if ( $orderlang->status == 1)
                                                     {{__('word.Delivery is in progress')}} 
-                                                @elseif ( $orderlang->status == 2)
-                                                    {{__('word.Delivered')}} 
-                                                @elseif ( $orderlang->status == 3)
-                                                    {{__('word.Returned')}} 
-                                                @endif
-                                            </span>
-                                        </div>
-                                    @elseif($orderlang->locale == 'ar')
-                                        <div class="d-flex justify-content-between information mx-2"><span>{{__('word.firstname')}}:</span><span>{{ $orderlang->firstname}}</span></div>
-                                        <div class="d-flex justify-content-between information"><span>{{__('word.lastname')}}:</span><span>{{ $orderlang->lastname}}</span></div>
-                                        <div class="d-flex justify-content-between information"><span>{{__('word.address')}}:</span><span>{{ $orderlang->address}}</span></div>
-                                        <div class="d-flex justify-content-between information"><span>{{__('word.status')}}:</span>
-                                            <span>
-                                                @if ( $orderlang->status == 1)
-                                                    {{__('word.Delivery is in progress')}} 
-
                                                     <a href="{{Route('dashboard.order.delivered',$order->id)}}" 
                                                         class="edit btn btn-success btn-sm">
                                                         <i class=" fa fa-home" ></i>
                                                     </a>
                                                 @elseif ( $orderlang->status == 2)
-                                                    {{__('word.Delivered')}}
-                                                    
+                                                    {{__('word.Delivered')}} 
                                                     <a href="{{Route('dashboard.order.returned',$order->id)}}" 
                                                         class="edit btn btn-success btn-sm">
                                                         <i class="fa  fa-mail-reply-all " ></i>
@@ -81,16 +64,7 @@
                                                 @endif
                                             </span>
                                         </div>
-
-                                        @if ( $orderlang->status == 1)
-                                           
-                                        @elseif ( $orderlang->status == 2)
-                                            {{__('word.Delivered')}} 
-                                        @elseif ( $orderlang->status == 3)
-                                            {{__('word.Returned')}} 
-                                        @endif
-                                      
-
+                                    
                                     @endif
                                     
                                 @endforeach

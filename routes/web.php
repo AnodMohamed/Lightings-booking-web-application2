@@ -28,29 +28,23 @@ use App\Models\User;
 |
 */
 
-Route::get('/', [IndexController::class, 'index'])->name('index');
-Route::get('/product/cart/shopping', [ShoppingCartController::class, 'cart'])->name('product.cart.shopping');
-Route::get('/categories/{category}', [WCategoryController::class, 'show'])->name('category');
-Route::get('/product/{product}', [WProudctController::class, 'show'])->name('product');
-Route::get('/product/cart/{booking}', [ShoppingCartController::class, 'store'])->name('product.cart');
-Route::get('/product/cart/delete/{id}', [ShoppingCartController::class, 'delete'])->name('product.cart.delete');
+Route::get('/', [IndexController::class, 'index'])->name('index');//done
+Route::get('/product/cart/shopping', [ShoppingCartController::class, 'cart'])->name('product.cart.shopping');//
+Route::get('/categories/{category}', [WCategoryController::class, 'show'])->name('category');//done
+Route::get('/product/{product}', [WProudctController::class, 'show'])->name('product');//done
+Route::get('/product/cart/{booking}', [ShoppingCartController::class, 'store'])->name('product.cart');//done
+Route::get('/product/cart/delete/{id}', [ShoppingCartController::class, 'delete'])->name('product.cart.delete');//done
 
-Route::get('/login', function () { return view('auth.login');} );
-Route::get('/register', function () { return view('auth.login');} );
-Route::get('/forgot-password', function () { return view('auth.forgot-password');} );
+Route::get('/login', function () { return view('auth.login');} );//done
+Route::get('/register', function () { return view('auth.register');} );//done
+Route::get('/forgot-password', function () { return view('auth.forgot-password');} );//done
 Route::get('/user/profile', function () { return view('profile.show');} );
-
-    
-
 
 
 Route::group(['prefix' => 'website', 'as' => 'website.', 'middleware' => 'customerauth'], function () {
 
-    Route::get('/product/cart/checkout', [ShoppingCartController::class, 'checkout'])->name('product.cart.checkout');
-    Route::post('/product/cart/checkout/store', [ShoppingCartController::class, 'checkoutstore'])->name('product.cart.checkout.store');
-
-    //orders
-    Route::get('/orders/all', [WOrederController::class, 'geOrdersDatatable'])->name('orders.all');
+    Route::get('/product/cart/checkout', [ShoppingCartController::class, 'checkout'])->name('product.cart.checkout');//done
+    Route::post('/product/cart/checkout/store', [ShoppingCartController::class, 'checkoutstore'])->name('product.cart.checkout.store');//done
 
     Route::resources([
         'orders' => WOrederController::class,
@@ -60,12 +54,7 @@ Route::group(['prefix' => 'website', 'as' => 'website.', 'middleware' => 'custom
 
 
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'adminauth'], function () {
-    //Route::get('/settings', function () {
-    //     return view('dashboard.settings');
-    // })->name('settings');
-    // Route::get('/dashboard', function () {
-    //     return view('dashboard.index');
-    // });
+
     Route::get('/settings', [ SettingController::class,'index' ])->name('settings');
     Route::post('/settings/update/{setting}', [ SettingController::class,'update' ])->name('settings.update');
     Route::get('/index', [ SettingController::class,'dashboard' ])->name('index');

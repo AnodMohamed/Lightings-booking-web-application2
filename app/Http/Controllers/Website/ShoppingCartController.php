@@ -54,16 +54,9 @@ class ShoppingCartController extends Controller
 
         $validatedData = $request->validate($data);
 
-        // if( $request->support == 0){
-        //     $finalltotal =  Cart::total();
-        // }elseif($request->support == 1){
-        //     $finalltotal = Cart::total() + 5;
-        // }
 
         $finalltotal =  Cart::total();
 
-
-        // dd($finalltotal);
 
         $order = Order::create(
             $request->except('subtotal','total', 'finalltotal', '_token')
@@ -108,7 +101,9 @@ class ShoppingCartController extends Controller
 
         ]);      
         
-        $int_price=(int)$finalltotal;
+        $usd = 3.27 * $finalltotal;
+        $int_price=(int)$usd ;
+
 
         //send data to stripe
         $intent =  $stripe->paymentIntents->create([
@@ -131,7 +126,7 @@ class ShoppingCartController extends Controller
                 $transaction = new Transaction();
                 $transaction->customer_id =Auth::user()->id;
                 $transaction->order_id =$order->id;
-                $transaction->amount =   $finalltotal;
+                $transaction->amount = $int_price ;
                 $transaction->status ='Payed';
                 $transaction->transaction_id = $customer->id;
                 $transaction->save();
@@ -143,7 +138,7 @@ class ShoppingCartController extends Controller
             
             
         }   
-        return redirect()->back();
+        return redirect()->route('website.orders.index');
 
     }
 
@@ -159,6 +154,8 @@ class ShoppingCartController extends Controller
     }
 
     public function delete($id){
+
+
         Cart::remove($id);
         // set a error message in the session
         session()->flash('success', __('word.success delete'));

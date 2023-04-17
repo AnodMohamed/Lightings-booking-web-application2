@@ -34,8 +34,6 @@
                             </div>
                             <div class="card-block">
 
-
-
                                 <div class="form-group col-md-12">
                                     <label>{{ __('word.image') }}</label>
                                     <input type="file" name="image" class="form-control" placeholder="{{ __('word.image') }}"
@@ -49,7 +47,7 @@
                                     <select name="parent" id="" class="form-control" required>
                                         <option value="0"> {{ __('word.parent') }} </option>
                                         @foreach ($categories as $category)
-                                        <option value="{{$category->id}}">{{$category->title}}</option>
+                                        <option value="{{$category->id}}">  {{$category->title}}</option>
                                         @endforeach
                                     </select>
                                 </div>

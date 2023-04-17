@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('customer_id')->unsigned();
+            $table->bigInteger('customer_id');
             $table->bigInteger('order_id');
             $table->String('amount')->nullable();
             $table->String('status')->nullable();
             $table->string('transaction_id')->nullable();
             $table->timestamps();
-            $table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade');
             $table->softDeletes();
 
         });

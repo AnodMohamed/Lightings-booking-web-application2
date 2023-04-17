@@ -1,3 +1,8 @@
+@push('style')
+@vite(['resources/js/app.js'])
+
+    
+@endpush
 @extends('layouts.website')
 
 @section('body')

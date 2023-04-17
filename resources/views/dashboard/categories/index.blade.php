@@ -12,7 +12,6 @@
         </ol>
 
 
-        {{-- {{dd($setting)}} --}}
 
         <div class="container-fluid">
 

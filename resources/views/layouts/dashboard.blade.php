@@ -24,11 +24,12 @@
     <!-- Main styles for this application -->
     
     @if ($setting->translate(app()->getlocale())->title == 'English') 
-        <link href="{{ asset('adminassets/dest/stylear.css') }}" rel="stylesheet">
 
-    @elseif ($setting->translate(app()->getlocale())->title == 'العربية') 
         <link href="{{ asset('adminassets/dest/style.css') }}" rel="stylesheet">
 
+    @elseif ($setting->translate(app()->getlocale())->title == 'العربية') 
+
+        <link href="{{ asset('adminassets/dest/stylear.css') }}" rel="stylesheet">
     @endif
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
 
@@ -62,7 +63,6 @@
                     border-bottom: 1px solid #cfd8dc;
                 "     
             >
-
             <ul class="nav navbar-nav hidden-md-down">
                 <li class="nav-item">
                     <a class="nav-link navbar-toggler layout-toggler" href="#">&#9776;</a>

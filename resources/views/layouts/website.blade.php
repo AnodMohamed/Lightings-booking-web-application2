@@ -35,6 +35,10 @@
     @elseif ($setting->translate(app()->getlocale())->title == 'العربية') 
         <link href="{{ asset('website') }}/css/stylear.css" rel="stylesheet">
     @endif
+
+    @stack('style')
+
+    @livewireStyles
 </head>
 
 <body>
@@ -48,7 +52,7 @@
     >
         <nav class="navbar navbar-expand-lg bg-light navbar-light py-2 py-lg-0 px-lg-5">
             <a href="" class="navbar-brand d-block d-lg-none">
-                <h1 class="m-0 display-5 text-uppercase"><span class="text-primary">News</span>Room</h1>
+                <h1 class="m-0 display-5 text-uppercase"><span class="text-primary">Lightings</span> booking</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -199,7 +203,9 @@
     <script src="{{ asset('website') }}/js/main.js"></script>
 
     @stack('javascripts')
+    @stack('modals')
 
+    @livewireScripts
 </body>
 
 </html>

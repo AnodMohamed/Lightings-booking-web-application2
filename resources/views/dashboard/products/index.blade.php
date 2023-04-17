@@ -62,7 +62,7 @@
                     <div class="form-group">
                         <p>{{ __('word.sure delete') }}</p>
                         @csrf
-                        <input type="hidden" name="id" id="id">
+                        <input type="hidden" name="id" id="id"  >
                     </div>
 
 

@@ -58,9 +58,10 @@
                                         </td>
                                         <td>
                                             @if ($booking->status == 0)
-                                                {{__('word.reserved')}}
-                                            @else
                                                 {{__('word.available')}}
+
+                                            @else
+                                                {{__('word.reserved')}}
 
                                             @endif
                                         </td>

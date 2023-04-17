@@ -47,10 +47,8 @@
                                 <div class="position-relative mb-3">
                                     <img class="img-fluid w-100" src="{{asset($category->image)}}" style="object-fit: cover;">
                                     <div class="overlay position-relative bg-light">
-                                        <div class="mb-2" style="font-size: 14px;">
-                                            <a href="">{{$category->title}}</a>
-                                        </div>
-                                        <a class="h4" href="">{{$category->title}}</a>
+                                       
+                                        <a class="h4" href="{{Route('category',$category->id)}}">{{$category->title}}</a>
                                         <p class="m-0"></p>
                                     </div>
                                 </div>

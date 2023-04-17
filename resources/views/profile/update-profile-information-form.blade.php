@@ -17,16 +17,16 @@
         >
 
             <!-- Name -->
-            <div class="col-span-6 sm:col-span-4 ">
+            <div class="col-span-12 sm:col-span-4 ">
                 <x-label for="name" value="{{ __('word.username') }}" />
-                <x-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
+                <x-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" value="{{ Auth::user()->name}}" />
                 <x-input-error for="name" class="mt-2" />
             </div>
 
             <!-- Email -->
-            <div class="col-span-6 sm:col-span-4">
+            <div class="col-span-12 sm:col-span-4">
                 <x-label for="email" value="{{ __('word.email') }}" />
-                <x-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" autocomplete="username" />
+                <x-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" autocomplete="username" value="{{ Auth::user()->email}}" />
                 <x-input-error for="email" class="mt-2" />
 
                 @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) && ! $this->user->hasVerifiedEmail())

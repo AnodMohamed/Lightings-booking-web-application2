@@ -34,11 +34,9 @@ class CategoryController extends Controller
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
 
-                // if (auth()->user()->can('viewAny', $this->setting)) {
                     return $btn = '
                         <a href="' . Route('dashboard.category.edit', $row->id) . '"  class="edit btn btn-success btn-sm" ><i class="fa fa-edit"></i></a>
                         <a id="deleteBtn" data-id="' . $row->id . '" class="edit btn btn-danger btn-sm"  data-toggle="modal" data-target="#deletemodal"><i class="fa fa-trash"></i></a>';
-                // }
             })
 
             ->addColumn('parent', function ($row) {
@@ -49,10 +47,8 @@ class CategoryController extends Controller
             ->addColumn('title', function ($row) {
                 return $row->translate(app()->getLocale())->title;
             })
-            ->addColumn('status', function ($row) {
-                return $row->status == null ? __('word.not activated') : __('word.' . $row->status);
-            })
-            ->rawColumns(['action', 'status', 'title'])
+
+            ->rawColumns(['action', 'title', 'parent'])
             ->make(true);
     }
 
@@ -65,7 +61,6 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        //$this->authorize('viewAny', $this->setting);
         $category =  Category::create($request->except('image', '_token'));
         if ($request->file('image')) {
             $file = $request->file('image');
@@ -93,7 +88,6 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //$this->authorize('viewAny', $this->setting);
         $category->update($request->except('image', '_token'));
         if ($request->file('image')) {
             $file = $request->file('image');
@@ -110,7 +104,6 @@ class CategoryController extends Controller
 
     public function delete(Request $request)
     {
-       // $this->authorize('viewAny', $this->setting);
         if (is_numeric($request->id)) {
             Category::where('parent', $request->id)->delete();
             Category::where('id', $request->id)->delete();

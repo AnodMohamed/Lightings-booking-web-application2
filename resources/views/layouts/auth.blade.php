@@ -25,10 +25,11 @@
     <!-- Main styles for this application -->
     
     @if ($setting->translate(app()->getlocale())->title == 'English') 
-        <link href="{{ asset('adminassets/dest/stylear.css') }}" rel="stylesheet">
+        <link href="{{ asset('adminassets/dest/style.css') }}" rel="stylesheet">
 
     @elseif ($setting->translate(app()->getlocale())->title == 'العربية') 
-        <link href="{{ asset('adminassets/dest/style.css') }}" rel="stylesheet">
+        <link href="{{ asset('adminassets/dest/stylear.css') }}" rel="stylesheet">
+
 
     @endif
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
@@ -64,7 +65,17 @@
                 "     
             >
 
-            <ul class="nav navbar-nav  hidden-md-down">
+            <ul class="nav navbar-nav hidden-md-down" 
+                @if ($setting->translate(app()->getlocale())->title == 'English') 
+                    style="direction: rtl; float: right;"
+
+                @elseif ($setting->translate(app()->getlocale())->title == 'العربية') 
+                    style="direction: ltr; float: left;"
+
+                @endif
+    
+            >
+            
                 <li class="nav-item" >
 
                     <a class="nav-link " href="{{route('index')}}" >
@@ -72,12 +83,13 @@
                     </a>
                 </li>
 
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="true" aria-expanded="false">
                         <span class="hidden-md-down">{{ LaravelLocalization::getCurrentLocaleNative() }}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <h1><i class="fa-solid fa-cart-shopping"></i></h1>
+
                         @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                             <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
                                 href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
@@ -85,9 +97,8 @@
                             </a>
                         @endforeach
 
-
-
                     </div>
+                </li>
             </ul>
 
            
@@ -132,16 +143,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
-  <script>
-      var allEditors = document.querySelectorAll('#editor');
-      for (var i = 0; i < allEditors.length; ++i) {
-          ClassicEditor.create(allEditors[i]);
-      }
 
-      $(document).ready(function() {
-          $('.js-example-basic-multiple').select2();
-      });
-  </script>
 
 
   @stack('javascripts')

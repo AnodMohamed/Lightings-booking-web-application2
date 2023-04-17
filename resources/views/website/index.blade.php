@@ -2,7 +2,7 @@
 
 @section('body')
 
- <!--Carousel Start -->
+ {{-- <!--Carousel Start -->
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" >
     <div class="carousel-inner">
       <div class="carousel-item active" style="height: 92vh;">
@@ -27,29 +27,10 @@
         </a>
 
 
-</div>
+</div> --}}
  <!--Carousel end -->
 
- <!-- Top News Slider Start -->
- <div class="container-fluid py-3" >
-    <div class="container">
-        <div class="owl-carousel owl-carousel-2 carousel-item-3 position-relative" >
-            @foreach ($lastFiveProducts as $product)
-            <div class="d-flex w-100"  
-                @if ($setting->translate(app()->getlocale())->title == 'العربية') 
-                    style="direction: rtl;"
-                @endif
-            >
-                <img src="{{asset($product->image)}}" style="width: 80px; height: 80px; object-fit: cover;">
-                <div class="d-flex align-items-center bg-light px-3 w-100">
-                    <a class="text-secondary font-weight-semi-bold" href="">{{$product->title}}</a>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</div>
-<!-- Top News Slider End -->
+
 
 
 <!-- Main News Slider Start -->
@@ -65,7 +46,7 @@
                             <div class="mb-1">
                                 <a class="text-white" href="{{Route('category',$product->category->id)}}">{{$product->category->title}}</a>
                                 <span class="px-2 text-white">/</span>
-                                <a class="text-white" href="">{{$product->created_at->format('Y-m-d')}}</a>
+                                <span class="text-white" href="">{{$product->created_at->format('Y-m-d')}}</span>
                             </div>
                             <a class="h2 m-0 text-white font-weight-bold" href="{{Route('product',$product->id)}}">{{$product->title}}</a>
                         </div>
@@ -92,13 +73,31 @@
 </div>
 <!-- Main News Slider End -->
 
-
+ <!-- Top News Slider Start -->
+ <div class="container-fluid py-3" >
+    <div class="container">
+        <div class="owl-carousel owl-carousel-2 carousel-item-3 position-relative" >
+            @foreach ($lastFiveProducts as $product)
+            <div class="d-flex w-100"  
+                @if ($setting->translate(app()->getlocale())->title == 'العربية') 
+                    style="direction: rtl;"
+                @endif
+            >
+                <img src="{{asset($product->image)}}" style="width: 80px; height: 80px; object-fit: cover;">
+                <div class="d-flex align-items-center bg-light px-3 w-100">
+                    <a class="text-secondary font-weight-semi-bold" href="{{Route('product',$product->id)}}">{{$product->title}}</a>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+<!-- Top News Slider End -->
 
 
 
 <!-- Category News Slider Start -->
 <div class="container-fluid">
-    <div class="container">
         <div class="row">
             @foreach ($categories_with_products as $category)
                 
@@ -135,7 +134,6 @@
            
         </div>
     </div>
-</div>
 </div>
 <!-- Category News Slider End -->
 

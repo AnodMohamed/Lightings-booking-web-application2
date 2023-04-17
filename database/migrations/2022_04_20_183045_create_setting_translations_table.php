@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('setting_translations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('setting_id')->unsigned();
-            $table->string('locale')->index();  // ar en fr tr 
+            $table->string('locale')->index();  // ar en  
             $table->string('title')->nullable();
             $table->text('content')->nullable();
             $table->text('address')->nullable();

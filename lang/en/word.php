@@ -113,5 +113,6 @@ return [
     'total transactions' => 'total transactions',
     'last six orders' => 'last six orders',
     'last six products' => 'last six products',
+    'exists date' => "exists date",
 
 ];

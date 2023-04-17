@@ -37,7 +37,6 @@ class ProductsController extends Controller
 
                 //
 
-                // if (auth()->user()->can('viewAny', $this->setting)) {
                     return $btn = '
                         <a href="' . Route('dashboard.product.edit', $row->id) . '"  class="edit btn btn-success btn-sm" ><i class="fa fa-edit"></i></a>
                         <a href="' . Route('dashboard.booking.add', $row->id) . '"  class="edit btn btn-info btn-sm" ><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></a>
@@ -46,7 +45,6 @@ class ProductsController extends Controller
 
                         ';
 
-                // }
             })
 
             ->addColumn('parent', function ($row) {
@@ -76,7 +74,6 @@ class ProductsController extends Controller
 
     public function store(Request $request)
     {
-        // $this->authorize('create' , $this->postmodel);
         $data = [
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'category_id' => 'required',
@@ -91,16 +88,16 @@ class ProductsController extends Controller
         }
         $validatedData = $request->validate($data);
 
+
         $product = Product::create($request->except('image','_token'));
 
-        // $product->update(['user_id' => auth()->user()->id]);
       
         if ($request->file('image')) {
             $file = $request->file('image');
             $filename = Str::uuid() . $file->getClientOriginalName();
             $file->move(public_path('images'), $filename);
             $path = 'images/' . $filename;
-            $product->update(['image' => $path]);
+            $product->save(['image' => $path]);
         }
         
         return redirect()->route('dashboard.product.index');
@@ -149,13 +146,11 @@ class ProductsController extends Controller
             $product->update(['image' => $path]);
         }
         
-        return redirect()->route('dashboard.product.edit' , $product);
+        return redirect()->route('dashboard.product.index');
     }
 
     public function delete (Request $request)
     {
-
-       // $this->authorize('delete' , $this->postmodel->find($request->id));
         if(is_numeric($request->id)){
             Product::where('id' , $request->id)->delete();
         }
